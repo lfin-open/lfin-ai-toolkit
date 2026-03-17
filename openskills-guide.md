@@ -38,29 +38,27 @@ Claude Code, Codex, Cursor, Windsurf, Aider 등 `AGENTS.md`를 읽는 모든 에
 > 여러 에이전트를 혼용한다면 `--universal` 옵션을 사용하세요.
 > `--global`을 사용하면 한 번만 설치해도 모든 프로젝트에서 사용 가능합니다.
 
-### 카테고리별 설치
-
-```bash
-# git 스킬만 설치
-npx openskills install l-fin/lfin-ai-toolkit/git
-
-# admin-design-system 스킬만 설치
-npx openskills install l-fin/lfin-ai-toolkit/admin-design-system
-```
-
 ### 개별 스킬 설치
 
+스킬 단위로 설치합니다. subpath는 `SKILL.md`가 있는 디렉토리까지 지정해야 합니다.
+
 ```bash
-npx openskills install l-fin/lfin-ai-toolkit/git/commit
-npx openskills install l-fin/lfin-ai-toolkit/git/create-pr
+# git 스킬
+npx openskills install lfin-open/lfin-ai-toolkit/git/commit
+npx openskills install lfin-open/lfin-ai-toolkit/git/create-pr
+npx openskills install lfin-open/lfin-ai-toolkit/git/summarize-pr
+
+# admin-design-system 스킬
+npx openskills install lfin-open/lfin-ai-toolkit/admin-design-system/migrate
+npx openskills install lfin-open/lfin-ai-toolkit/admin-design-system/migrate-plan
+npx openskills install lfin-open/lfin-ai-toolkit/admin-design-system/apply-composites
 ```
 
 ### 로컬에 클론한 경우
 
 ```bash
-npx openskills install ./path/to/lfin-ai-toolkit            # 전체
-npx openskills install ./path/to/lfin-ai-toolkit/git         # git만
-npx openskills install ./path/to/lfin-ai-toolkit/git/commit  # commit만
+npx openskills install ./path/to/lfin-ai-toolkit/git/commit
+npx openskills install ./path/to/lfin-ai-toolkit/git/create-pr
 ```
 
 ---
