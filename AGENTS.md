@@ -17,6 +17,14 @@ When creating or modifying skills in this repo, follow these rules:
 
 ## Available Skills
 
+### admin-design-system/
+
+| Skill | Description |
+|-------|-------------|
+| [`apply-composites`](./admin-design-system/apply-composites/SKILL.md) | Apply Composite components (AppLayout, DataTable, FilterBuilder) |
+| [`migrate`](./admin-design-system/migrate/SKILL.md) | Migrate existing project to @l-fin/ui-components design system |
+| [`migrate-plan`](./admin-design-system/migrate-plan/SKILL.md) | Analyze prev/ folder and generate MIGRATION_PLAN.md |
+
 ### git/
 
 | Skill | Description |
@@ -24,11 +32,3 @@ When creating or modifying skills in this repo, follow these rules:
 | [`commit`](./git/commit/SKILL.md) | Create git commit following project conventions |
 | [`create-pr`](./git/create-pr/SKILL.md) | Prepare and create PR to develop branch |
 | [`summarize-pr`](./git/summarize-pr/SKILL.md) | Summarize develop→main merge PR and update PR body |
-
-### admin-design-system/
-
-| Skill | Description |
-|-------|-------------|
-| [`migrate`](./admin-design-system/migrate/SKILL.md) | Migrate existing project to @l-fin/ui-components design system |
-| [`migrate-plan`](./admin-design-system/migrate-plan/SKILL.md) | Analyze prev/ folder and generate MIGRATION_PLAN.md |
-| [`apply-composites`](./admin-design-system/apply-composites/SKILL.md) | Apply Composite components (AppLayout, DataTable, FilterBuilder) |

@@ -50,5 +50,6 @@ All skills in this repo MUST follow the [Agent Skills specification](https://age
 ## User-Facing Guides (root)
 
 - [git-skills-guide.md](./git-skills-guide.md) — Claude Code 기준 Git 스킬 설치/사용 가이드
+- [design-system-skills-guide.md](./design-system-skills-guide.md) — Claude Code 기준 디자인 시스템 마이그레이션 스킬 가이드
 - [openskills-guide.md](./openskills-guide.md) — 다른 에이전트용 openskills 설치/사용 가이드
 - [gitea-setup-guide.md](./gitea-setup-guide.md) — Gitea REST API 로컬 세팅 가이드
