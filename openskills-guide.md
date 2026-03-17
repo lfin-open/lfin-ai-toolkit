@@ -66,12 +66,18 @@ npx openskills install ./path/to/lfin-ai-toolkit/git/create-pr
 ## Step 2: AGENTS.md 동기화
 
 설치 후 `sync`를 실행하면 `AGENTS.md`에 스킬 목록이 등록됩니다.
+`sync`는 기본적으로 **현재 디렉토리**의 `./AGENTS.md`에 씁니다.
 
 ```bash
+# 프로젝트 내 AGENTS.md에 등록 (프로젝트 디렉토리에서 실행)
 npx openskills sync
+
+# 글로벌 AGENTS.md에 등록 (--global로 설치한 경우)
+npx openskills sync -o ~/AGENTS.md
 ```
 
-> `AGENTS.md`를 커밋하면 팀원 모두 같은 스킬 목록을 공유합니다.
+> `--global`로 스킬을 설치했다면 `sync`도 `-o ~/AGENTS.md`로 실행해야 합니다.
+> 프로젝트 내 `AGENTS.md`를 커밋하면 팀원 모두 같은 스킬 목록을 공유합니다.
 
 ---
 
