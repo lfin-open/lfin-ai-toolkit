@@ -1,0 +1,54 @@
+# lfin-ai-toolkit
+
+LFIN 사내 공용 AI 스킬 모음 레포.
+
+## Agent Skills Spec Compliance
+
+All skills in this repo MUST follow the [Agent Skills specification](https://agentskills.io/specification).
+
+### Required
+
+- Each skill = one directory + `SKILL.md`
+- `name`: required, 1-64 chars, lowercase alphanumeric + hyphens only, MUST match directory name
+- `description`: required, 1-1024 chars, must describe **what it does AND when to use it**
+- Frontmatter fields allowed: `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`
+- No custom frontmatter fields
+
+### Recommended
+
+- `SKILL.md` under 500 lines — extract detailed content to `references/`
+- `references/` for supplemental docs (loaded on demand)
+- `scripts/` for executable code
+- `assets/` for templates and data files
+- Keep reference files focused and small for efficient context usage
+
+### Conventions (repo-specific)
+
+- Skill instructions in **English** (token efficiency)
+- User-facing output messages in **Korean**
+- Code and comments as-is
+- Each skill should be self-contained (include necessary `references/` within the skill directory)
+- Shared references at category level (e.g., `git/references/`) serve as the source of truth
+- Large files like `gitea-api.md` (80KB) are NOT duplicated into each skill — referenced from global config path instead
+
+## Repository Structure
+
+### Git & Git Remote Skills
+
+- `./git/references/detect-remote.md` — Shared reference: GitHub vs Gitea detection (source of truth)
+- `./git/references/gitea-api.md` — Shared reference: Gitea REST API spec
+- `./git/commit/SKILL.md` — Commit generator
+- `./git/create-pr/SKILL.md` — PR creator (includes `./git/create-pr/references/detect-remote.md`)
+- `./git/summarize-pr/SKILL.md` — PR summarizer (includes `./git/summarize-pr/references/detect-remote.md`)
+
+### Design System Migration Skills
+
+- `./admin-design-system/migrate/SKILL.md` — Migration executor (references in `./admin-design-system/migrate/references/`)
+- `./admin-design-system/migrate-plan/SKILL.md` — Migration planner
+- `./admin-design-system/apply-composites/SKILL.md` — Composite components (references in `./admin-design-system/apply-composites/references/`)
+
+## User-Facing Guides (root)
+
+- [git-skills-guide.md](./git-skills-guide.md) — Claude Code 기준 Git 스킬 설치/사용 가이드
+- [openskills-guide.md](./openskills-guide.md) — 다른 에이전트용 openskills 설치/사용 가이드
+- [gitea-setup-guide.md](./gitea-setup-guide.md) — Gitea REST API 로컬 세팅 가이드
