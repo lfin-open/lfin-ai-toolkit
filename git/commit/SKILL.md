@@ -14,7 +14,7 @@ Create a git commit following LFIN project conventions with Jira ticket prefix.
 3. Run `git status` and `git diff --staged` to analyze changes
 4. Determine commit type and scope from changes
 5. Generate commit message in Korean with ticket prefix
-6. Execute `git commit`
+6. Execute `git commit` using HEREDOC format (see below)
 
 ## Commit Format
 
@@ -63,3 +63,16 @@ Regex: `/([A-Z]+-\d+)/` from branch name
 - Blank line between subject and body
 - Body explains "what" and "why"
 - One commit = one logical change
+- **MUST use HEREDOC** for commit message to preserve newlines:
+
+```bash
+git commit -m "$(cat <<'EOF'
+<subject line>
+
+<body>
+EOF
+)"
+```
+
+> **WARNING**: Do NOT pass multi-line messages as a single string with `\n`.
+> Some agents render `\n` as literal text instead of newlines.
