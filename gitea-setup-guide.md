@@ -1,7 +1,7 @@
 # Gitea REST API 로컬 세팅 가이드
 
 > **이 문서는 사용자(개발자)를 위한 가이드입니다.**
-> AI 도구(Claude Code, Codex)에서 Gitea를 REST API로 연동하기 위한 로컬 환경 설정 방법을 안내합니다.
+> 사용하는 AI 에이전트와 관계없이, Gitea를 REST API로 연동하기 위한 로컬 환경 설정 방법을 안내합니다.
 
 ## tea CLI 대신 REST API를 쓰는 이유
 
@@ -32,18 +32,12 @@ source ~/.zshrc
 
 ## Step 2: API 레퍼런스 파일 복사
 
-이 레포의 `git/references/gitea-api.md` 파일을 AI 도구 설정 디렉토리에 복사합니다.
-
-**Claude Code 사용 시:**
+이 레포의 `git/references/gitea-api.md` 파일을 사용하는 AI 에이전트 설정 디렉토리에 복사합니다.
 
 ```bash
-cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.claude/gitea-api.md
-```
-
-**Codex 사용 시:**
-
-```bash
-cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.codex/gitea-api.md
+# 사용하는 에이전트에 맞는 경로에 복사
+cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.claude/gitea-api.md   # Claude Code
+cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.agent/gitea-api.md    # 그 외 에이전트
 ```
 
 > 이 파일은 467개 엔드포인트 + 216개 스키마를 한 줄씩 요약한 인덱스입니다 (748줄).
@@ -63,7 +57,7 @@ cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.codex/gitea-api.md
 - API 레퍼런스: ~/.claude/gitea-api.md 파일을 읽고 엔드포인트와 스키마 확인
 ```
 
-### Codex (`~/.codex/AGENTS.md` 또는 프로젝트 `AGENTS.md`)
+### 그 외 에이전트 (`~/AGENTS.md` 또는 프로젝트 `AGENTS.md`)
 
 ```markdown
 ## Gitea Integration
@@ -72,7 +66,7 @@ cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.codex/gitea-api.md
 - Base URL: ${GITEA_URL}/api/v1
 - 인증: -H "Authorization: token ${GITEA_TOKEN}"
 - owner/repo: git remote get-url origin에서 자동 파싱
-- API 레퍼런스: ~/.codex/gitea-api.md 파일을 읽고 엔드포인트와 스키마 확인
+- API 레퍼런스: ~/.agent/gitea-api.md 파일을 읽고 엔드포인트와 스키마 확인
 ```
 
 > **주의**: `@gitea-api.md`처럼 직접 참조하면 매 세션마다 전체 파일(77.6K)이 로드됩니다.

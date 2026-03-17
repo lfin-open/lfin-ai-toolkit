@@ -89,15 +89,16 @@ npx openskills remove commit               # 특정 스킬 삭제
 
 ## Step 4: 스킬 사용
 
-설치 + sync 완료 후, 에이전트에서 스킬명으로 호출합니다.
+설치 + sync 완료 후, 에이전트에게 관련 작업을 요청하면 `AGENTS.md`의 스킬 목록을 읽고 자동으로 적절한 스킬을 선택합니다.
 
-```bash
-/commit
-/create-pr
-/migrate
+```
+커밋해줘
+PR 만들어줘
+마이그레이션 진행해줘
 ```
 
-에이전트가 `AGENTS.md`의 스킬 목록을 읽고, description 기반으로 적절한 스킬을 자동 선택하거나 명시적 호출에 응답합니다.
+> `/commit` 같은 슬래시 명령은 Claude Code 전용입니다.
+> 다른 에이전트에서는 자연어로 요청하면 에이전트가 `npx openskills read <skill-name>`을 실행하여 스킬 내용을 로드합니다.
 
 ---
 
@@ -121,35 +122,14 @@ npx openskills remove commit               # 특정 스킬 삭제
 
 ---
 
-## 사전 요구사항 (Git remote 스킬)
+## 추가 설정
 
-`create-pr`, `summarize-pr` 스킬은 git remote 플랫폼에 따라 추가 설정이 필요합니다.
+### Git remote 스킬 (`create-pr`, `summarize-pr`)
 
-### GitHub 프로젝트
+GitHub 프로젝트는 `gh` CLI 인증만 되어 있으면 바로 사용 가능합니다.
+Gitea 프로젝트는 환경변수와 API 레퍼런스 파일 설정이 필요합니다. [Gitea 세팅 가이드](./gitea-setup-guide.md)를 참고하세요.
 
-- `gh` CLI 설치 및 인증: `gh auth login`
-
-### Gitea 프로젝트
-
-환경변수 설정과 API 레퍼런스 배치가 필요합니다.
-
-**1. 환경변수 설정**
-
-```bash
-# ~/.zshrc 또는 ~/.bashrc에 추가
-export GITEA_URL="https://git.lfin.kr"
-export GITEA_TOKEN="your-personal-access-token"
-```
-
-**2. gitea-api.md 배치**
+### openskills 설치 시 gitea-api.md 추가 배치
 
 openskills로 설치하면 `gitea-api.md`(80KB)는 포함되지 않습니다.
-사용하는 에이전트 설정 경로에 수동으로 복사해주세요:
-
-```bash
-cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.claude/gitea-api.md
-cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.codex/gitea-api.md
-cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.agent/gitea-api.md
-```
-
-상세 설정은 [Gitea 세팅 가이드](./gitea-setup-guide.md)를 참고하세요.
+Gitea 프로젝트에서 `create-pr`, `summarize-pr`을 사용하려면 [Gitea 세팅 가이드](./gitea-setup-guide.md)의 Step 2를 따라 API 레퍼런스 파일을 배치해주세요.
