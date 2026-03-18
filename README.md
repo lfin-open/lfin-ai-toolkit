@@ -17,6 +17,7 @@ LFIN 사내 공용 AI 스킬 모음 레포. [Agent Skills 스펙](https://agents
 
 | 스킬 | 설명 |
 |------|------|
+| [git](./git/SKILL.md) | Git 스킬 세트를 안내하는 메타/카탈로그 스킬 |
 | [commit](./git/commit/SKILL.md) | 프로젝트 컨벤션에 맞는 커밋 메시지 생성 |
 | [create-pr](./git/create-pr/SKILL.md) | develop 브랜치로 PR 생성/업데이트 |
 | [summarize-pr](./git/summarize-pr/SKILL.md) | develop→main 머지 PR 본문 자동 요약 |

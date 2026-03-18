@@ -41,6 +41,7 @@ Claude Code, Codex, Cursor, Windsurf, Aider 등 `AGENTS.md`를 읽는 모든 에
 ### 개별 스킬 설치
 
 스킬 단위로 설치합니다. subpath는 `SKILL.md`가 있는 디렉토리까지 지정해야 합니다.
+`git`는 카탈로그 성격의 메타 스킬이므로, 실제 Git 작업을 하려면 child skill(`commit`, `create-pr`, `summarize-pr`) 설치를 기준으로 생각하는 것이 안전합니다.
 
 ```bash
 # git 스킬
@@ -114,6 +115,7 @@ PR 만들어줘
 
 | 스킬 | 설명 |
 |------|------|
+| `git` | Git 스킬 세트를 안내하는 메타/카탈로그 스킬 |
 | `commit` | 프로젝트 컨벤션에 맞는 커밋 메시지 생성 |
 | `create-pr` | develop 브랜치로 PR 생성/업데이트 |
 | `summarize-pr` | develop→main 머지 PR 본문 자동 요약 |
@@ -135,7 +137,11 @@ PR 만들어줘
 GitHub 프로젝트는 `gh` CLI 인증만 되어 있으면 바로 사용 가능합니다.
 Gitea 프로젝트는 환경변수와 API 레퍼런스 파일 설정이 필요합니다. [Gitea 세팅 가이드](./gitea-setup-guide.md)를 참고하세요.
 
-### openskills 설치 시 gitea-api.md 추가 배치
+### openskills 설치 시 Gitea 레퍼런스 동작
 
-openskills로 설치하면 `gitea-api.md`(80KB)는 포함되지 않습니다.
-Gitea 프로젝트에서 `create-pr`, `summarize-pr`을 사용하려면 [Gitea 세팅 가이드](./gitea-setup-guide.md)의 Step 2를 따라 API 레퍼런스 파일을 배치해주세요.
+- 이 레포의 최신 `create-pr`, `summarize-pr` 디렉토리에는 각 스킬별
+  `references/gitea-api.md` runtime mirror가 포함되어 있습니다.
+- 따라서 해당 child skill을 직접 설치하면 Gitea 프로젝트에서도 로컬 reference로 동작할 수 있습니다.
+- 글로벌 `~/.claude/gitea-api.md`, `~/.codex/gitea-api.md`, `~/.agent/gitea-api.md` 배치는
+  fallback 또는 다른 Gitea 작업 프롬프트를 위한 선택 사항입니다.
+- 자세한 운영 방식은 [Gitea 세팅 가이드](./gitea-setup-guide.md)를 참고하세요.

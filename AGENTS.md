@@ -29,6 +29,7 @@ When creating or modifying skills in this repo, follow these rules:
 
 | Skill | Description |
 |-------|-------------|
+| [`git`](./git/SKILL.md) | Route git-related work to the right child skill in this repository |
 | [`commit`](./git/commit/SKILL.md) | Create git commit following project conventions |
 | [`create-pr`](./git/create-pr/SKILL.md) | Prepare and create PR to develop branch |
 | [`summarize-pr`](./git/summarize-pr/SKILL.md) | Summarize develop→main merge PR and update PR body |

@@ -29,17 +29,18 @@ All skills in this repo MUST follow the [Agent Skills specification](https://age
 - Code and comments as-is
 - Each skill should be self-contained (include necessary `references/` within the skill directory)
 - Shared references at category level (e.g., `git/references/`) serve as the source of truth
-- Large files like `gitea-api.md` (80KB) are NOT duplicated into each skill — referenced from global config path instead
+- Child skills may mirror large shared references locally when standalone runtime behavior depends on them
 
 ## Repository Structure
 
 ### Git & Git Remote Skills
 
+- `./git/SKILL.md` — Meta-skill / catalog router for the git skill family
 - `./git/references/detect-remote.md` — Shared reference: GitHub vs Gitea detection (source of truth)
 - `./git/references/gitea-api.md` — Shared reference: Gitea REST API spec
 - `./git/commit/SKILL.md` — Commit generator
-- `./git/create-pr/SKILL.md` — PR creator (includes `./git/create-pr/references/detect-remote.md`)
-- `./git/summarize-pr/SKILL.md` — PR summarizer (includes `./git/summarize-pr/references/detect-remote.md`)
+- `./git/create-pr/SKILL.md` — PR creator (includes local `references/detect-remote.md` and `references/gitea-api.md` runtime mirror)
+- `./git/summarize-pr/SKILL.md` — PR summarizer (includes local `references/detect-remote.md` and `references/gitea-api.md` runtime mirror)
 
 ### Design System Migration Skills
 
