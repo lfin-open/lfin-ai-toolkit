@@ -30,9 +30,17 @@ source ~/.zshrc
 
 **토큰 발급**: Gitea 웹 → Settings → Applications → Generate New Token
 
-## Step 2: API 레퍼런스 파일 복사
+## Step 2: API 레퍼런스 파일 배치 (선택적 fallback)
 
-이 레포의 `git/references/gitea-api.md` 파일을 사용하는 AI 에이전트 설정 디렉토리에 복사합니다.
+이 레포의 최신 `git/create-pr`, `git/summarize-pr` 스킬은 각 디렉토리 안에
+`references/gitea-api.md` runtime mirror를 포함합니다. 따라서 이 child skill들을 그대로
+복사/설치해 사용한다면 별도 글로벌 복사 없이도 동작할 수 있습니다.
+
+다만 아래 방식으로 글로벌 경로에 배치해두면:
+- 스킬 밖의 일반 Gitea 작업 프롬프트에서 재사용하기 쉽고
+- fallback 경로로도 활용할 수 있습니다
+
+필요한 경우 이 레포의 `git/references/gitea-api.md`를 에이전트 설정 디렉토리에 복사하세요.
 
 ```bash
 # 사용하는 에이전트에 맞는 경로에 복사
@@ -41,6 +49,7 @@ cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.agent/gitea-api.md   
 ```
 
 > 이 파일은 467개 엔드포인트 + 216개 스키마를 한 줄씩 요약한 인덱스입니다 (748줄).
+> 레포 내 `git/references/gitea-api.md`가 source of truth이고, child skill 아래 파일은 runtime mirror입니다.
 > AI가 Gitea 작업이 필요할 때만 읽으며, 매 세션마다 로드되지 않습니다.
 
 ## Step 3: CLAUDE.md / AGENTS.md에 Gitea 섹션 추가
@@ -94,5 +103,5 @@ curl -s -H "Authorization: token $GITEA_TOKEN" "$GITEA_URL/api/v1/user" | jq .lo
 ## 체크리스트
 
 - [ ] `GITEA_URL`, `GITEA_TOKEN` 환경변수 설정
-- [ ] `gitea-api.md` 파일을 `~/.claude/` 또는 `~/.codex/`에 복사
+- [ ] 필요 시 `gitea-api.md` 파일을 `~/.claude/`, `~/.codex/`, `~/.agent/` 중 사용하는 경로에 복사
 - [ ] `CLAUDE.md` 또는 `AGENTS.md`에 Gitea Integration 섹션 추가

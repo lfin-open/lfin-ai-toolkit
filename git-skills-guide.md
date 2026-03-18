@@ -8,6 +8,7 @@
 
 | 스킬 | 설명 | remote 사용 |
 |------|------|:-----------:|
+| `git` | Git 스킬 세트를 안내하는 메타/카탈로그 스킬 | - |
 | `commit` | 프로젝트 컨벤션에 맞는 커밋 메시지 생성 | - |
 | `create-pr` | develop 브랜치로 PR 생성/업데이트 | O |
 | `summarize-pr` | develop→main 머지 PR 본문 자동 요약 | O |
@@ -35,7 +36,7 @@
 ## 설치 방법
 
 ```bash
-# 전체 복사 (권장 — references 공유 구조 유지)
+# 전체 복사 (권장 — meta 스킬 + child 스킬 + shared source 유지)
 cp -r /path/to/lfin-ai-toolkit/git .claude/skills/git
 
 # 또는 개별 스킬만 복사
@@ -43,7 +44,8 @@ cp -r /path/to/lfin-ai-toolkit/git/commit .claude/skills/commit
 ```
 
 > `commit`만 사용한다면 `commit/` 폴더 하나만 복사하면 됩니다.
-> `create-pr`, `summarize-pr`은 각 스킬 내에 `references/detect-remote.md`가 포함되어 있어 개별 복사도 동작합니다.
+> `create-pr`, `summarize-pr`은 각 스킬 내에 `references/detect-remote.md`와
+> `references/gitea-api.md`가 포함되어 있어 개별 복사도 동작합니다.
 
 ---
 
@@ -59,6 +61,7 @@ cp -r /path/to/lfin-ai-toolkit/git/commit .claude/skills/commit
 
 ```
 git/
+  SKILL.md                 # Git 스킬 세트를 안내하는 메타/카탈로그 스킬
   references/              # 레포 내 공유 레퍼런스 (원본)
     detect-remote.md       # GitHub vs Gitea 자동 감지 로직
     gitea-api.md           # Gitea REST API 스펙 (467 endpoints)
@@ -68,17 +71,22 @@ git/
     SKILL.md
     references/
       detect-remote.md     # 스킬 내 포함 (자체 완결)
+      gitea-api.md         # 스킬 내 포함 (runtime mirror)
   summarize-pr/
     SKILL.md
     references/
       detect-remote.md     # 스킬 내 포함 (자체 완결)
+      gitea-api.md         # 스킬 내 포함 (runtime mirror)
 ```
 
 ## 레퍼런스 동작 방식
 
+- `git/SKILL.md`는 `git/` 세트를 설명하고 child skill로 라우팅하는 메타 스킬입니다
 - `commit`은 remote를 안 쓰므로 레퍼런스 참조 없음
 - `create-pr`, `summarize-pr`는 각 스킬 내 `references/detect-remote.md`를 참조
-- Gitea로 감지되면 글로벌 경로(`~/.claude/gitea-api.md` 등)에서 `gitea-api.md`를 추가 로딩
+- Gitea로 감지되면 각 스킬 내 `references/gitea-api.md`를 우선 사용합니다
+- `git/references/gitea-api.md`는 레포의 source of truth이고, child 스킬 아래 복사본은 standalone runtime mirror입니다
+- 필요하면 글로벌 경로(`~/.claude/gitea-api.md` 등)를 fallback으로 사용할 수 있습니다
 - GitHub이면 `gitea-api.md`를 로딩하지 않음
 
 ## 커밋 메시지 컨벤션
