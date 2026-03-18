@@ -86,7 +86,7 @@ Analyze commit history and diff, then compose in this format:
 
 #### 3-2. User confirmation (required)
 
-Show generated PR content via `AskUserQuestion` tool:
+Show the generated PR content to the user using the current interaction surface and request explicit approval before proceeding:
 
 ```
 📝 PR 내용을 확인해주세요:
