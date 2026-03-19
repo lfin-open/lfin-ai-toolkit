@@ -28,22 +28,20 @@ All skills in this repo MUST follow the [Agent Skills specification](https://age
 - User-facing output messages in **Korean**
 - Code and comments as-is
 - Each skill should be self-contained (include necessary `references/` within the skill directory)
-- Shared references at category level (e.g., `git/references/`) serve as the source of truth
-- Child skills may mirror large shared references locally when standalone runtime behavior depends on them
+- Each child skill maintains its own `references/` directory for self-contained operation
 
 ## Repository Structure
 
 ### Git & Git Remote Skills
 
 - `./git/SKILL.md` — Meta-skill / catalog router for the git skill family
-- `./git/references/detect-remote.md` — Shared reference: GitHub vs Gitea detection (source of truth)
-- `./git/references/gitea-api.md` — Shared reference: Gitea REST API spec
 - `./git/commit/SKILL.md` — Commit generator
-- `./git/create-pr/SKILL.md` — PR creator (includes local `references/detect-remote.md` and `references/gitea-api.md` runtime mirror)
-- `./git/summarize-pr/SKILL.md` — PR summarizer (includes local `references/detect-remote.md` and `references/gitea-api.md` runtime mirror)
+- `./git/create-pr/SKILL.md` — PR creator (references in `./git/create-pr/references/`)
+- `./git/summarize-pr/SKILL.md` — PR summarizer (references in `./git/summarize-pr/references/`)
 
 ### Design System Migration Skills
 
+- `./admin-design-system/SKILL.md` — Meta-skill / catalog router for the admin-design-system skill family
 - `./admin-design-system/migrate/SKILL.md` — Migration executor (references in `./admin-design-system/migrate/references/`)
 - `./admin-design-system/migrate-plan/SKILL.md` — Migration planner
 - `./admin-design-system/apply-composites/SKILL.md` — Composite components (references in `./admin-design-system/apply-composites/references/`)
@@ -54,3 +52,4 @@ All skills in this repo MUST follow the [Agent Skills specification](https://age
 - [design-system-skills-guide.md](./design-system-skills-guide.md) — Claude Code 기준 디자인 시스템 마이그레이션 스킬 가이드
 - [openskills-guide.md](./openskills-guide.md) — 다른 에이전트용 openskills 설치/사용 가이드
 - [gitea-setup-guide.md](./gitea-setup-guide.md) — Gitea REST API 로컬 세팅 가이드
+- [contributing-guide.md](./contributing-guide.md) — 스킬 추가/수정 절차 및 브랜치 전략 가이드
