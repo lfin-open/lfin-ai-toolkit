@@ -44,6 +44,7 @@ All skills in this repo MUST follow the [Agent Skills specification](https://age
 
 ### Design System Migration Skills
 
+- `./admin-design-system/SKILL.md` — Meta-skill / catalog router for the admin-design-system skill family
 - `./admin-design-system/migrate/SKILL.md` — Migration executor (references in `./admin-design-system/migrate/references/`)
 - `./admin-design-system/migrate-plan/SKILL.md` — Migration planner
 - `./admin-design-system/apply-composites/SKILL.md` — Composite components (references in `./admin-design-system/apply-composites/references/`)
@@ -54,3 +55,4 @@ All skills in this repo MUST follow the [Agent Skills specification](https://age
 - [design-system-skills-guide.md](./design-system-skills-guide.md) — Claude Code 기준 디자인 시스템 마이그레이션 스킬 가이드
 - [openskills-guide.md](./openskills-guide.md) — 다른 에이전트용 openskills 설치/사용 가이드
 - [gitea-setup-guide.md](./gitea-setup-guide.md) — Gitea REST API 로컬 세팅 가이드
+- [contributing-guide.md](./contributing-guide.md) — 스킬 추가/수정 절차 및 브랜치 전략 가이드
