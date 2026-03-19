@@ -96,7 +96,38 @@ npx openskills remove commit               # 특정 스킬 삭제
 
 ## Step 4: 스킬 사용
 
-설치 + sync 완료 후, 에이전트에게 관련 작업을 요청하면 `AGENTS.md`의 스킬 목록을 읽고 자동으로 적절한 스킬을 선택합니다.
+### 동작 원리
+
+`npx openskills sync`를 실행하면 `AGENTS.md`에 아래와 같은 XML 블록이 생성됩니다.
+
+```xml
+<skills_system priority="1">
+<usage>
+How to use skills:
+- Invoke: `npx openskills read <skill-name>` (run in your shell)
+  - For multiple: `npx openskills read skill-one,skill-two`
+- The skill content will load with detailed instructions ...
+</usage>
+<available_skills>
+  <skill>
+    <name>commit</name>
+    <description>Create git commit following project conventions. ...</description>
+  </skill>
+  ...
+</available_skills>
+</skills_system>
+```
+
+에이전트는 세션 시작 시 `AGENTS.md`를 읽고, 사용자의 요청이 스킬의 `description`과 매칭되면 자동으로 `npx openskills read <skill-name>`을 shell에서 실행합니다. 이 명령은 해당 `SKILL.md`의 전체 내용을 stdout으로 출력하고, 에이전트가 그 지시사항을 따릅니다.
+
+### 에이전트별 차이
+
+| 에이전트 | 스킬 로딩 방식 |
+|----------|---------------|
+| **Claude Code** | `.claude/skills/`를 직접 읽음. `/commit` 같은 슬래시 명령 지원 |
+| **Cursor, Windsurf, Codex, Aider 등** | `AGENTS.md`의 `<available_skills>` 카탈로그를 읽고, 매칭 시 `npx openskills read`를 shell로 실행 |
+
+Claude Code 외 에이전트에서는 자연어로 요청합니다.
 
 ```
 커밋해줘
@@ -104,8 +135,18 @@ PR 만들어줘
 마이그레이션 진행해줘
 ```
 
-> `/commit` 같은 슬래시 명령은 Claude Code 전용입니다.
-> 다른 에이전트에서는 자연어로 요청하면 에이전트가 `npx openskills read <skill-name>`을 실행하여 스킬 내용을 로드합니다.
+에이전트가 자동으로 트리거하지 않는 경우, 직접 실행을 지시할 수 있습니다.
+
+```
+npx openskills read commit 실행해서 그 지시사항대로 커밋해줘
+```
+
+### 스킬이 트리거되지 않을 때
+
+`description` 필드가 에이전트의 유일한 판단 기준입니다. 자동 트리거가 안 되면:
+
+1. `npx openskills read <skill-name>` 실행을 직접 지시
+2. 또는 `AGENTS.md`의 스킬 목록을 참고하라고 안내
 
 ---
 
