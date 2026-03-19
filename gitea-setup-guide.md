@@ -40,16 +40,15 @@ source ~/.zshrc
 - 스킬 밖의 일반 Gitea 작업 프롬프트에서 재사용하기 쉽고
 - fallback 경로로도 활용할 수 있습니다
 
-필요한 경우 이 레포의 `git/references/gitea-api.md`를 에이전트 설정 디렉토리에 복사하세요.
+필요한 경우 이 레포의 `git/create-pr/references/gitea-api.md`를 에이전트 설정 디렉토리에 복사하세요.
 
 ```bash
 # 사용하는 에이전트에 맞는 경로에 복사
-cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.claude/gitea-api.md   # Claude Code
-cp /path/to/lfin-ai-toolkit/git/references/gitea-api.md ~/.agent/gitea-api.md    # 그 외 에이전트
+cp /path/to/lfin-ai-toolkit/git/create-pr/references/gitea-api.md ~/.claude/gitea-api.md   # Claude Code
+cp /path/to/lfin-ai-toolkit/git/create-pr/references/gitea-api.md ~/.agent/gitea-api.md    # 그 외 에이전트
 ```
 
 > 이 파일은 467개 엔드포인트 + 216개 스키마를 한 줄씩 요약한 인덱스입니다 (748줄).
-> 레포 내 `git/references/gitea-api.md`가 source of truth이고, child skill 아래 파일은 runtime mirror입니다.
 > AI가 Gitea 작업이 필요할 때만 읽으며, 매 세션마다 로드되지 않습니다.
 
 ## Step 3: CLAUDE.md / AGENTS.md에 Gitea 섹션 추가

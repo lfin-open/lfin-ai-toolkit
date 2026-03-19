@@ -85,7 +85,6 @@ git/
 - `commit`은 remote를 안 쓰므로 레퍼런스 참조 없음
 - `create-pr`, `summarize-pr`는 각 스킬 내 `references/detect-remote.md`를 참조
 - Gitea로 감지되면 각 스킬 내 `references/gitea-api.md`를 우선 사용합니다
-- `git/references/gitea-api.md`는 레포의 source of truth이고, child 스킬 아래 복사본은 standalone runtime mirror입니다
 - 필요하면 글로벌 경로(`~/.claude/gitea-api.md` 등)를 fallback으로 사용할 수 있습니다
 - GitHub이면 `gitea-api.md`를 로딩하지 않음
 
