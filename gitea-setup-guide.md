@@ -33,8 +33,8 @@ source ~/.zshrc
 ## Step 2: API 레퍼런스 파일 배치 (선택적 fallback)
 
 이 레포의 최신 `git/create-pr`, `git/summarize-pr` 스킬은 각 디렉토리 안에
-`references/gitea-api.md` runtime mirror를 포함합니다. 따라서 이 child skill들을 그대로
-복사/설치해 사용한다면 별도 글로벌 복사 없이도 동작할 수 있습니다.
+`references/gitea-api.md`를 포함합니다. 따라서 이 child skill들을 그대로
+복사/설치해 사용한다면 별도 글로벌 복사 없이도 동작합니다.
 
 다만 아래 방식으로 글로벌 경로에 배치해두면:
 - 스킬 밖의 일반 Gitea 작업 프롬프트에서 재사용하기 쉽고

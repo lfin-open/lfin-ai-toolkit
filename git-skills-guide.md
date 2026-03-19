@@ -36,7 +36,7 @@
 ## 설치 방법
 
 ```bash
-# 전체 복사 (권장 — meta 스킬 + child 스킬 + shared source 유지)
+# 전체 복사 (권장 — meta 스킬 + child 스킬 일괄 설치)
 cp -r /path/to/lfin-ai-toolkit/git .claude/skills/git
 
 # 또는 개별 스킬만 복사
@@ -62,21 +62,18 @@ cp -r /path/to/lfin-ai-toolkit/git/commit .claude/skills/commit
 ```
 git/
   SKILL.md                 # Git 스킬 세트를 안내하는 메타/카탈로그 스킬
-  references/              # 레포 내 공유 레퍼런스 (원본)
-    detect-remote.md       # GitHub vs Gitea 자동 감지 로직
-    gitea-api.md           # Gitea REST API 스펙 (467 endpoints)
   commit/
     SKILL.md
   create-pr/
     SKILL.md
     references/
-      detect-remote.md     # 스킬 내 포함 (자체 완결)
-      gitea-api.md         # 스킬 내 포함 (runtime mirror)
+      detect-remote.md     # GitHub vs Gitea 자동 감지 로직
+      gitea-api.md         # Gitea REST API 스펙 (467 endpoints)
   summarize-pr/
     SKILL.md
     references/
-      detect-remote.md     # 스킬 내 포함 (자체 완결)
-      gitea-api.md         # 스킬 내 포함 (runtime mirror)
+      detect-remote.md     # GitHub vs Gitea 자동 감지 로직
+      gitea-api.md         # Gitea REST API 스펙 (467 endpoints)
 ```
 
 ## 레퍼런스 동작 방식
