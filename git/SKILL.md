@@ -11,7 +11,7 @@ Use this meta-skill as the catalog/router for git-related workflows in this repo
 
 - you need help choosing the right git workflow
 - you want an overview of the `git/` skill family before invoking a child skill
-- you want bundle-level guidance without coupling child skills to parent-only runtime references
+- you want to understand the git skill family structure
 
 ## Child skills
 
@@ -38,7 +38,4 @@ Use this meta-skill as the catalog/router for git-related workflows in this repo
 ## Architecture note
 
 - `git/` is the set/catalog layer for this skill family.
-- Each child skill remains standalone and self-contained.
-- `git/references/` is the bundle-level source of truth for shared git reference material.
-- Child `references/` copies are runtime mirrors used to keep standalone child skills portable.
-- When shared Gitea API guidance changes, update `git/references/gitea-api.md` first and then sync the child copies that depend on it.
+- Each child skill is standalone and self-contained, including its own `references/` directory.

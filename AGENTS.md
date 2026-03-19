@@ -21,6 +21,7 @@ When creating or modifying skills in this repo, follow these rules:
 
 | Skill | Description |
 |-------|-------------|
+| [`admin-design-system`](./admin-design-system/SKILL.md) | Route design system migration workflows to the right child skill |
 | [`apply-composites`](./admin-design-system/apply-composites/SKILL.md) | Apply Composite components (AppLayout, DataTable, FilterBuilder) |
 | [`migrate`](./admin-design-system/migrate/SKILL.md) | Migrate existing project to @l-fin/ui-components design system |
 | [`migrate-plan`](./admin-design-system/migrate-plan/SKILL.md) | Analyze prev/ folder and generate MIGRATION_PLAN.md |
