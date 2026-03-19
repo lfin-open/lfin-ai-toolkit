@@ -2,6 +2,8 @@
 
 LFIN 사내 공용 AI 스킬 모음 레포. [Agent Skills 스펙](https://agentskills.io/specification)을 따릅니다.
 
+AI 스킬 외에도 프롬프트, 워크플로우, 레퍼런스 등 팀에 공유하고 싶은 AI 관련 자산이라면 무엇이든 환영합니다. 기여 방법은 [기여 가이드](./contributing-guide.md)를 참고해 주세요.
+
 ## 가이드 문서
 
 | 문서 | 대상 | 설명 |
