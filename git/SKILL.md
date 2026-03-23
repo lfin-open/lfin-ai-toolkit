@@ -39,3 +39,10 @@ Use this meta-skill as the catalog/router for git-related workflows in this repo
 
 - `git/` is the set/catalog layer for this skill family.
 - Each child skill is standalone and self-contained, including its own `references/` directory.
+
+## Gitea policy
+
+- **NEVER** use `tea` CLI for any Gitea operation. Do not install, login, or invoke `tea`.
+- For Gitea remotes, use the **REST API** (`curl`) with `GITEA_TOKEN` (Personal Access Token) exclusively.
+- If `GITEA_TOKEN` or `GITEA_URL` environment variables are missing, print an error and **STOP**. Do not fall back to `tea` CLI or any other method.
+- This policy applies to all child skills that interact with git remotes (`create-pr`, `summarize-pr`).

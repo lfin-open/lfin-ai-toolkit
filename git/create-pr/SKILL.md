@@ -126,3 +126,4 @@ Show the generated PR content to the user using the current interaction surface 
 - Target branch: always `develop`
 - Output messages in **Korean**
 - Ticket extraction: match `/([A-Z]+-\d+)/` from branch name
+- Gitea remote: **NEVER** use `tea` CLI. Use Gitea REST API with `curl` and `GITEA_TOKEN` (PAT) exclusively. See `references/detect-remote.md`.
