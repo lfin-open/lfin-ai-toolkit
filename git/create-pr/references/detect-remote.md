@@ -15,6 +15,12 @@ REMOTE_URL=$(git remote get-url origin)
 | Contains `github.com` | GitHub | `gh` CLI |
 | Otherwise | Gitea | Gitea REST API (`curl`) |
 
+## CRITICAL: Gitea CLI Policy
+
+> **NEVER** use `tea` CLI for Gitea operations. Do NOT attempt to install, login, or invoke `tea` in any form.
+> The ONLY permitted method for Gitea interaction is the **REST API** via `curl` with a PAT (`GITEA_TOKEN` environment variable).
+> This applies to ALL operations: creating PRs, listing PRs, updating PRs, fetching commits, fetching files.
+
 ## GitHub (`gh` CLI)
 
 - Assumes `gh` CLI is installed and authenticated.

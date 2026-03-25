@@ -87,3 +87,4 @@ Compose using the template below:
 - Reuse feature PR body content
 - Include version info if release commit exists
 - Exclude non-significant files (lock files, etc.) from Changed Files
+- Gitea remote: **NEVER** use `tea` CLI. Use Gitea REST API with `curl` and `GITEA_TOKEN` (PAT) exclusively. See `references/detect-remote.md`.
